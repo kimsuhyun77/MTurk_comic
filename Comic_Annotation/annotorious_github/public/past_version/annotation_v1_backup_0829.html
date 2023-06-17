@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Annotation - Context(y) and Novel(y)</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <!-- New -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+          crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- cropper -->
+  <!-- https://jamesooi.design/Croppr.js/ -->
+  <!-- <script src="../../node_modules/croppr/dist/croppr.js"></script>
+        <link rel="stylesheet" href="../../node_modules/croppr/dist/croppr.css"> -->
+
+  <!-- Annotorious -->
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="annotorious.min.css">
+  <script src="annotorious.min.js"></script>
+
+</head>
+<style>
+  /* .modal {
+          padding: 18px;
+          position: absolute;
+          border: 1px solid lightgrey;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 300px;
+      }
+      
+      .modal img {
+          max-width: 100%;
+      } */
+
+  html,
+  body {
+    padding: 20px;
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  #content {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 21px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+  }
+
+  p.instructions {
+    padding: 10px 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  p.caption {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #8f8f8f;
+  }
+
+  p.caption a {
+    color: #3f3f3f;
+  }
+</style>
+
+<body>
+  <!-- Responsive navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-lg-5">
+      <a class="navbar-brand" href="#!">Novel(y) and Context(y)</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Header-->
+  <!-- Page Content-->
+  <section id="myDiv" class="pt-4">
+    <div id="myDiv2" class="container-fluid">
+      <div id="myDiv3" class="row row-height">
+
+
+        <div id="myDivLeft" class="col-md-4 left">
+          <div class="card border-primary mb-3">
+            <div class="card-body text-primary">
+              <h5 class="card-title" style="color:black">Matched Novel</h5>
+              <p id="comicnovel" class="card-text" style="color:black">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="myDivMid" class="col-md-4 mid" style="text-align:left;"> 
+
+          <!-- <img src="https://unsplash.it/500/500/?random" alt="" id="cropper"> -->
+
+        </div>
+
+
+        <div id="myDivRight" class="col-md-4 right" color="black">
+
+          <div class="card border-primary mb-3">
+            <div class="card-body text-primary">
+              <h5 class="card-title" style="color:black">Instruction</h5>
+              <p class="card-text" style="color:black">
+                <li style="color:black">Please describe a comic scene with a red border;</li>
+                <li style="color:black">Please describe the visual content and the related information that is helpful
+                  for understanding the comic scene;
+                <li style="color:black">Please keep your description concise overall;</li>
+                <li style="color:black">Please use a minimum of 8 words;</li>
+                <li style="color:black"><b>Please use the novel.</b> You can paste or edit parts of the novel sentence;</li>
+              </p>
+            </div>
+          </div>
+
+          <form>
+
+            <div class="form-group">
+              <div style="margin-bottom: 15px;">
+                <label for="des1" style="margin-bottom: 0px;"><b>The scene
+                    description</b></label>
+                <!-- <p>해당 장면의 전체적인 상황설명을 해주세요</p> -->
+                <p style="margin-bottom: 10px;">Please describe the overall situation of the scene.</p>
+                <!-- <p class="textCount" id="cnt1">0</p><p class="textTotal" float="left">/300</p> -->
+                <textarea class="form-control" id="des1" rows="3"></textarea>
+              </div>
+
+              <div style="margin-bottom: 15px;">
+                <label for="des2" style="margin-bottom: 0px;"><b>Background</b></label>
+                <!-- <p>장소/시간/사물 등을 표현해주세요</p> -->
+                <p style="margin-bottom: 10px;">Please write down the place/time/object or etc.</p>
+                <!-- <p class="textCount" id="cnt2">0</p><p class="textTotal">/300</p> -->
+                <textarea class="form-control" id="des2" rows="3"></textarea>
+              </div>
+
+              <div class="row" style="margin-bottom: 15px;">
+                
+                <!-- 캐릭터 -->
+                <!-- <div class="row">  
+                  <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Character</b>
+                  </label>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <img src="/annotorious_github/assets/plusBtn.png" width="27" />
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a id="char1" class="dropdown-item" href="#"><img
+                            src="..\assets\Tappytoon\Dungeon\Dungeon_c1.jpg" width="50px">char1</a></li>
+                      <li><a id="charOther" class="dropdown-item" href="#"><img
+                            src="..\assets\Tappytoon\Dungeon\charOther.png" width="50px">Other</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <p id="charP" style="margin-bottom: 10px;">Select the character in the scene using the drop bar below
+                  and write down the character's appearance(gender,age,hair style,clothes,belongings,etc.)
+                  ,actions, expressions, gaze, etc.
+                </p>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div> -->
+
+              <div style="margin-bottom: 15px;">
+                <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Character</b></label>
+                <button id="addChar" class="button" type="button">
+                  <img src="/annotorious_github/assets/plusBtn.png" width="27" />
+                </button>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label id="noTextual" class="form-check-label" for="flexCheckDefault">
+                    No character
+                  </label>
+                </div>
+                <p style="margin-bottom: 10px;">Select the character in the scene using the drop bar below
+                  and write down the character's appearance(gender,age,hair style,clothes,belongings,etc.)
+                  ,actions, expressions, gaze, etc.</p>
+                <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                <ol id="addedChar">
+                </ol>
+              </div>
+              
+              <!-- 효과음 -->
+              <div style="margin-bottom: 15px;">
+                <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Textual sound
+                    effects</b></label>
+                <button id="addTextual" class="button" type="button">
+                  <img src="/annotorious_github/assets/plusBtn.png" width="27" />
+                </button>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label id="noTextual" class="form-check-label" for="flexCheckDefault">
+                    No textual sound effect
+                  </label>
+                </div>
+                <p style="margin-bottom: 10px;">Please describe the Textual sound effects.</p>
+                <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                <ol id="addedTextual">
+                </ol>
+              </div>
+
+              <!-- 동작선 -->
+              <div style="margin-bottom: 15px;">
+                <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Manpu</b></label>
+                <button id="addManpu" class="button" type="button">
+                  <img src="/annotorious_github/assets/plusBtn.png" width="27" />
+                </button>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label id="noManpu" class="form-check-label" for="flexCheckDefault">
+                    No Manpu
+                  </label>
+                </div>
+                <p style="margin-bottom: 10px;">Pleas describe the manpu.</p>
+                <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                <ol id="addedManpu">
+                </ol>
+              </div>
+            </div>
+          </form>
+
+          <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+    </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="bootstrap.bundle.min.js / bootstrap.bundle.js"></script> -->
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+<script>
+  (function () {
+    
+    //모든 html 페이지가 화면에 뿌려지고 나서 저 ready안에 서술된 이벤트들이 동작준비를 하는것
+    jQuery(document).ready(function () {
+
+      const adj = ['Alcoholic', 'Silent', 'Big', 'Difficult', 'Courageous', 'Fancy', 'Cruel', 'Materialistic', 'Childlike', 'Ruthless',
+        'Flawless', 'Doubtful', 'Jealous', 'Husky', 'Enchanted', 'Idiotic', 'Giant', 'Boring', 'Determined', 'Irritating'];
+      const animal = ['Sheep', 'Chimpanzee', 'Antelope', 'Bear', 'Fox', 'Cat', 'Puma', 'Ape', 'Cow', 'Koala',
+        'Deer', 'Parrot', 'Donkey', 'Gorilla', 'Alpaca', 'Hamster', 'Frog', 'Elephant', 'Alligator', 'Dingo'];
+      const adj_animal = [];
+      for (var i in adj) {
+        for (var j in animal) {
+          adj_animal.push(adj[i] + " " + animal[j])
+        }
+      }
+      // Create session name
+      var newSessionName = adj_animal[Math.floor(Math.random() * adj_animal.length)]
+
+      const databaseURL = ""; //"https://comics-a11y-default-rtdb.firebaseio.com/w0system/"+newSessionName;
+      const db = ['/panels', '/comments', '/details'];
+
+
+      //초기화 변수
+      var title = 'Dungeon';
+      var episode = '01';
+      var cuti = ['01', '03', '04', '05', '08', '09', '10', '11', '12'];
+      var i = 0;
+      var cut = cuti[i]; // ex. 01, 03...
+
+      //변하는 변수
+      var selectedBtn = 'none';
+      var listTextual = [];
+      var listManpu = [];
+
+
+      //이미지
+      function getImg() {
+
+        var imgSrc = '../assets/Tappytoon/Dungeon/Dungeon_img_test/Dungeon_01_' + cuti[i-1] + '.jpg';
+        imgInput = '<div><img src="' + imgSrc + '" id="hallstatt" width="400px"></div>'
+        $('#myDivMid').append(imgInput);
+        imgSrc = '../assets/Tappytoon/Dungeon/Dungeon_img_test/Dungeon_01_' + cuti[i] + '.jpg';
+        imgInput = '<div><img src="' + imgSrc + '" id="hallstatt" width="400px" style="border: 10px solid red;"></div>'
+        $('#myDivMid').append(imgInput);
+        imgSrc = '../assets/Tappytoon/Dungeon/Dungeon_img_test/Dungeon_01_' + cuti[i+1] + '.jpg';
+        imgInput = '<div><img src="' + imgSrc + '" id="hallstatt" width="400px"></div>'
+        $('#myDivMid').append(imgInput);
+
+        // for (var i = 0; i < cuti.length; i++) {
+        //   var imgSrc = '../assets/Tappytoon/Dungeon/Dungeon_img_test/Dungeon_01_' + cuti[i] + '.jpg';
+        //   var imgInput = '<div><img src="' + imgSrc + '" width="400px"></div>'
+        //   if (cuti[i] == cut) {
+        //     imgInput = '<div><img src="' + imgSrc + '" id="hallstatt" width="400px" style="border: 10px solid red;"></div>'
+        //   }
+        //   // console.log(imgInput);
+        //   $('#myDivMid').append(imgInput);
+        // }
+      }
+      getImg();
+
+
+      //소설
+      function readJSON(file, callback) {
+        var rawFile = new XMLHttpRequest();
+        rawFile.overrideMimeType("application/json");
+        rawFile.open("GET", file, true);
+        rawFile.onreadystatechange = function () {
+          if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+          }
+        }
+        rawFile.send(null);
+      }
+      readJSON("../assets/Tappytoon/Dungeon/Dungeon_mapping.json", function (text) {
+        var Data = JSON.parse(text);
+        //console.log(Data);
+        //console.log(Data[0].Mapping);
+
+        $('#comicnovel').append(Data[i].Mapping);
+        $('#comicnovel').append("<br>");
+      });
+      
+      // 글 작성 실시간으로 글 세기
+      // $('#des1').keyup(function (e) {
+      //     let content = $(this).val();
+            
+      //       // 글자수 세기
+      //       if (content.length == 0 || content == '') {
+      //         $('#cnt1').text('0');
+      //       } else {
+      //         $('#cnt1').text(content.length + '');
+      //       }
+            
+      //       // 글자수 제한
+      //       if (content.length > 500) {
+      //         // 200자 부터는 타이핑 되지 않도록
+      //           $(this).val($(this).val().substring(0, 300));
+      //           // 200자 넘으면 알림창 뜨도록
+      //           alert('.');
+      //       };
+      //   });
+
+
+      
+
+      //캐릭터 추가
+      // $('#char1').click(function () {
+      //   console.log('Add Character');
+      //   source = '<div><img src="../assets/Tappytoon/Dungeon/Dungeon_c1.jpg" width="50px"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+      //   $('#charP').after(source)
+      // });
+      // $('#charOther').click(function () {
+      //   console.log('Add Character');
+
+      //   source = '<div><img src="../assets/Tappytoon/Dungeon/charOther.png" width="50px"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+      //   $('#charP').after(source)
+      // });
+
+      anno = Annotorious.init(
+        {
+          image: 'hallstatt',
+          locale: 'auto',
+          drawOnSingleClick: true,
+          widgets: [
+            { widget: 'COMMENT' },
+
+            // { widget: 'TAG', vocabulary: [ 'Animal', 'Building', 'Waterbody'] }
+          ]
+        });
+
+      anno.on('selectAnnotation', function (a, shape) {
+        console.log('selected');
+      });
+      anno.on('cancelSelected', function (a) {
+        console.log('cancel');
+      });
+      anno.on('changeSelected', function (selected, previous) {
+        console.log('changed from', previous, 'to', selected);
+      });
+      anno.on('createAnnotation', function (annotation) { //첫 생성sksms
+        console.log('created', annotation);
+        // console.log(annotation.target.source);
+        // console.log(annotation.id);
+        // console.log(annotation.body[0].value);
+        // console.log(annotation.target.selector.value);
+
+        if(selectedBtn == 'char'){
+          var element = annotation.body[0].value;
+          source = '<li id="liChar">'+element+'</li>'
+          $('#addedChar').append(source);
+        }
+        else if(selectedBtn == 'textual'){
+          var element = annotation.body[0].value;
+          source = '<li id="liTextual">'+element+'</li>'
+          $('#addedTextual').append(source);
+        }
+        else if(selectedBtn == 'manpu'){
+          var element = annotation.body[0].value;
+          source = '<li id="liManpu">'+element+'</li>'
+          $('#addedManpu').append(source);
+        }
+        // anno.push({});
+        // anno.push({ teks:teks,context:context,x:x,y:y,width:width,height:height,id:id});
+      });
+      anno.on('updateAnnotation', function (annotation, previous) { //수정할 때
+        console.log('updated', previous, 'with', annotation);
+      });
+      anno.on('clickAnnotation', function (annotation, shape) { 
+        console.log('clicked', annotation);
+      });
+      anno.on('deleteAnnotation', function (annotation) { //삭제할 때
+        console.log('deleted', annotation);
+
+  
+        var element = annotation.body[0].value;
+        if($('#liChar').text() == element)
+        {
+          console.log(element);
+          $('#liChar').remove();
+        }
+        else if($('#liTextual').text() == element)
+        {
+          console.log(element);
+          $('#liTextual').remove();
+        }
+        else if($('#liManpu').text() == element)
+        {
+          console.log(element);
+          $('#liManpu').remove();
+        }
+
+      });
+      anno.on('mouseEnterAnnotation', function (annotation) {
+        console.log('enter', annotation);
+      });
+      anno.on('mouseLeaveAnnotation', function (annotation) {
+        console.log('leave', annotation);
+      });
+
+      // anno.loadAnnotations('annotations.w3c.json');
+      anno.loadAnnotations('label_textual_v1.json');
+
+      
+      // 캐릭터 버튼
+      $('#addChar').click(function () {
+        console.log('addChar!!');
+        // anno.setDrawingTool('polygon');
+
+        selectedBtn = 'char';
+      })
+
+
+      // 효과음 버튼
+      $('#addTextual').click(function () {
+        console.log('addTextual!!');
+        // anno.setDrawingTool('polygon');
+
+        selectedBtn = 'textual';
+      })
+
+      // 동작선 버튼
+      $('#addManpu').click(function () {
+        console.log('addManpu!!');
+
+        selectedBtn = 'manpu';
+
+      })
+
+
+      // var toolToggle = document.getElementById('current-tool');
+      // toolToggle.addEventListener('click', function() 
+      // {
+      //   if (toolToggle.innerHTML == 'RECTANGLE') {
+      //     toolToggle.innerHTML = 'POLYGON';
+      //     anno.setDrawingTool('polygon');
+      //   } else {
+      //     toolToggle.innerHTML = 'RECTANGLE';
+      //     anno.setDrawingTool('rect');
+      //   }
+      // });
+
+      $('#submitBtn').click(function () {
+        console.log('Submit!!');
+        // anno.loadAnnotations('label_textual_v1.json');
+
+        // 최소 글자 수 
+        //des1Cnt = $('#des1').val().length;
+        des1Cnt = $('#des1').val().length;
+        des2Cnt = $('#des2').val().length;
+
+        if(des1Cnt>0) des1Cnt = $('#des1').val().match(/\w+/g).length;
+        if(des2Cnt>0) des2Cnt = $('#des2').val().match(/\w+/g).length;
+        // console.log(des1Cnt);
+
+        if(des1Cnt < 8 || des2Cnt < 8)
+          alert('Please write at least 8 words');
+        else
+        {
+          alert('Submit!');
+        }
+        
+        
+
+      })
+
+    });
+  }());
+
+</script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+
+</html>

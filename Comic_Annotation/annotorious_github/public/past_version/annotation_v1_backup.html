@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Annotation - Context(y) and Novel(y)</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <!-- New -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+          crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+          crossorigin="anonymous"></script>
+      
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- cropper -->
+        <!-- https://jamesooi.design/Croppr.js/ -->
+        <!-- <script src="../../node_modules/croppr/dist/croppr.js"></script>
+        <link rel="stylesheet" href="../../node_modules/croppr/dist/croppr.css"> -->
+
+        <!-- Annotorious -->
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="annotorious.min.css">
+        <script src="annotorious.min.js"></script>
+        
+    </head>
+    <style>
+      /* .modal {
+          padding: 18px;
+          position: absolute;
+          border: 1px solid lightgrey;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 300px;
+      }
+      
+      .modal img {
+          max-width: 100%;
+      } */
+
+      html, body {
+        padding:20px;
+        margin:0px;
+        font-family:'Lato', sans-serif;
+      }
+      
+      #content {
+        width:100%;
+      }
+
+      h1 {
+        font-size:21px;
+        font-weight:normal;
+        margin:0;
+        padding:0;
+      }
+
+      p.instructions {
+        padding:10px 0;
+      }
+
+      img {
+        max-width:100%;
+      }
+
+      p.caption {
+        font-family:Arial, Helvetica, sans-serif;
+        color:#8f8f8f;
+      }
+
+      p.caption a {
+        color:#3f3f3f;
+      }
+      </style>
+    
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-lg-5">
+                <a class="navbar-brand" href="#!">Novel(y) and Context(y)</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <!-- Page Content-->
+        <section id="myDiv" class="pt-4">
+            <div id="myDiv2" class = "container-fluid">
+              <div id="myDiv3" class = "row row-height">
+                  
+                
+                <div id="myDivLeft" class = "col-md-4 left">
+                  <div class="card border-primary mb-3" >
+                     <div class="card-body text-primary">
+                        <h5 class="card-title" style="color:black">Matched Novel</h5>
+                        <p id="comicnovel" class="card-text" style="color:black">
+                        </p>
+                      </div>
+                   </div>
+                </div>
+
+                <div id="myDivMid" class = "col-md-4 mid" style="text-align:center;">
+                  
+                    <!-- <img src="https://unsplash.it/500/500/?random" alt="" id="cropper"> -->
+               
+                </div>
+               
+
+                <div id="myDivRight" class = "col-md-4 right" color="black">
+              
+                  <div class="card border-primary mb-3" >
+                    <div class="card-body text-primary">
+                       <h5 class="card-title" style="color:black">Instruction</h5>
+                       <p class="card-text" style="color:black">
+                         <li style="color:black">Please describe a comic scene with a red border;</li>
+                         <li style="color:black">Please describe the visual content and the related information that is helpful for understanding the comic scene;
+                         <li style="color:black">Please keep your description concise overall;</li>
+                         <li style="color:black">Please use a minimum of 8 words;</li>
+                         <li style="color:black">Please use the novel. You can paste or edit parts of the novel sentence;</li>
+                       </p>
+                     </div>
+                  </div>
+
+                    <form>
+                      <div class="form-group">
+                        <div style="margin-bottom: 15px;">
+                          <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>The scene description</b></label>
+                          <!-- <p>해당 장면의 전체적인 상황설명을 해주세요</p> -->
+                          <p style="margin-bottom: 10px;">Please describe the overall situation of the scene.</p>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                          <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Background</b></label>
+                          <!-- <p>장소/시간/사물 등을 표현해주세요</p> -->
+                          <p style="margin-bottom: 10px;">Please write down the place/time/object or etc.</p>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                          <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Character</b></label>
+                          <div class="dropdown">
+                            <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Choose the characters
+                            </button> -->
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <img src="/annotorious_github/assets/plusBtn.png" width="27" /> 
+                             </button>
+                            <ul class="dropdown-menu">
+                              <li><a id="char1" class="dropdown-item" href="#"><img src="..\assets\Tappytoon\Dungeon\Dungeon_c1.jpg" width="50px"></a></li>
+                              <li><a id="charOther" class="dropdown-item" href="#"><img src="..\assets\Tappytoon\Dungeon\charOther.png" width="50px">Other</a></li>
+                            </ul>
+                          </div>
+                          <!-- <p>아래 드롭바를 이용하여 장면에 있는 캐릭터를 선택한 후 해당 캐릭터의 외향(성별,나이,머리스타일,옷차림,소지품 등)과
+                            actions, expressions, 시선 등 을 적어주세요.  -->
+                            <!-- 만약 첫등장이거나 외향적인 변화가 있다면 적어주세요 (성별,나이,머리스타일,옷차림,소지품 등) -->
+                          <p style="margin-bottom: 10px;">Select the character in the scene using the drop bar below 
+                            and write down the character's appearance(gender,age,hair style,clothes,belongings,etc.)
+                            ,actions, expressions, gaze, etc.
+                          </p>
+                          <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                          <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>Textual sound effects</b></label>
+                          <button id="addTextual" class="btn btn-default">
+                            <img src="/annotorious_github/assets/plusBtn.png" width="27" /> 
+                           </button>
+                          <p style="margin-bottom: 10px;">Pleas describe the Textual sound effects.</p>
+                          <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                          <div id="addedTextual">
+                          </div>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                          <label for="exampleFormControlTextarea1" style="margin-bottom: 0px;"><b>동작선</b></label>
+                          <button id="addDong" class="btn btn-default">
+                            <img src="/annotorious_github/assets/plusBtn.png" width="27" /> 
+                           </button>
+                          <p style="margin-bottom: 10px;">Pleas describe 동작선.</p>
+                          <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                          <div id="addedDong">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    
+                    <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+
+
+                  </div>
+                  
+
+
+                </div>
+             </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="bootstrap.bundle.min.js / bootstrap.bundle.js"></script> -->
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+
+    <script>
+        (function() 
+        {
+            //모든 html 페이지가 화면에 뿌려지고 나서 저 ready안에 서술된 이벤트들이 동작준비를 하는것
+            jQuery(document).ready(function () 
+            {
+                
+                const adj = ['Alcoholic', 'Silent', 'Big', 'Difficult', 'Courageous', 'Fancy', 'Cruel', 'Materialistic', 'Childlike', 'Ruthless', 
+                'Flawless', 'Doubtful', 'Jealous', 'Husky', 'Enchanted', 'Idiotic', 'Giant', 'Boring', 'Determined', 'Irritating'];
+                const animal = ['Sheep', 'Chimpanzee', 'Antelope', 'Bear', 'Fox', 'Cat', 'Puma', 'Ape', 'Cow', 'Koala',
+                'Deer', 'Parrot', 'Donkey', 'Gorilla', 'Alpaca', 'Hamster', 'Frog', 'Elephant', 'Alligator', 'Dingo'];
+                const adj_animal = [];
+                for (var i in adj) {
+                    for (var j in animal) {
+                        adj_animal.push(adj[i] + " " + animal[j])
+                    }
+                }
+                // Create session name
+                var newSessionName = adj_animal[Math.floor(Math.random() * adj_animal.length)]
+    
+                const databaseURL = ""; //"https://comics-a11y-default-rtdb.firebaseio.com/w0system/"+newSessionName;
+                const db = ['/panels', '/comments', '/details'];
+    
+                
+                //초기화 변수
+                var title = 'Dungeon';
+                var episode = '01';
+                var cuti = ['01','03','04','05','08','09','10','11','12'];
+                var i = 0; // 0~8 , 6~8
+                var cut = cuti[i]; // ex. 01, 03...
+
+
+                //이미지
+                function getImg()
+                {
+                  for(var i=0; i<cuti.length; i++){
+                    var imgSrc = '../assets/Tappytoon/Dungeon/Dungeon_img_test/Dungeon_01_'+cuti[i]+'.jpg';
+                    var imgInput = '<div><img src="'+imgSrc+'" width="400px"></div>'
+                    if(cuti[i] == cut){
+                      imgInput = '<div><img src="'+imgSrc+'" id="hallstatt" width="400px" style="border: 10px solid red;"></div>'
+                    }
+                    console.log(imgInput);
+                    $('#myDivMid').append(imgInput);
+                  }
+                } 
+                getImg();
+                
+
+                //소설
+                function readJSON(file, callback) {
+                    var rawFile = new XMLHttpRequest();
+                    rawFile.overrideMimeType("application/json");
+                    rawFile.open("GET", file, true);
+                    rawFile.onreadystatechange = function() {
+                        if (rawFile.readyState === 4 && rawFile.status == "200") {
+                            callback(rawFile.responseText);
+                        }
+                    }
+                    rawFile.send(null);
+                }
+                readJSON("../assets/Tappytoon/Dungeon/Dungeon_mapping.json", function(text){
+                    var Data = JSON.parse(text);
+                    //console.log(Data);
+                    //console.log(Data[0].Mapping);
+
+                    $('#comicnovel').append(Data[i].Mapping);
+                    $('#comicnovel').append("<br>");
+                });
+
+                //캐릭터 선택 추가 text
+                // $('#char1').click(function () {           
+                //   console.log('Add Character');
+                //   source = '<div><img src="../assets/Tappytoon/Dungeon/Dungeon_c1.jpg" width="50px"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+                //   $('div.dropdown').after(source)
+                // });
+                // $('#charOther').click(function () {           
+                //   console.log('Add Character');
+
+                //   source = '<div><img src="../assets/Tappytoon/Dungeon/charOther.png" width="50px"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+                //   $('div.dropdown').after(source)
+                // });
+
+                //효과음 추가
+                $('#addTextual').click(function () {               
+                    // var croppr = new Croppr('#cropper', {
+                    //   onInitialize: (instance) => { console.log(instance); },
+                    //   onCropStart: (data) => { console.log('start', data); },
+                    //   onCropEnd: (data) => { console.log('end', data); },
+                    //   onCropMove: (data) => { console.log('move', data); }
+                    // });
+                    anno = Annotorious.init(
+                          {
+                            image: 'hallstatt',
+                            locale: 'auto',
+                            drawOnSingleClick: true,
+                            widgets: [
+                              { widget: 'COMMENT' },
+                              // { widget: 'TAG', vocabulary: [ 'Animal', 'Building', 'Waterbody'] }
+                            ]
+                          });
+                    // anno.setAuthInfo({
+                    //   id: 'http://www.example.com/rainer',
+                    //   displayName: 'rainer'
+                    // });
+                    anno.on('selectAnnotation', function(a, shape) {
+                      console.log('selected');
+                    });
+                    anno.on('cancelSelected', function(a) {
+                      console.log('cancel');
+                    });
+                    anno.on('changeSelected', function(selected, previous) {
+                      console.log('changed from', previous, 'to', selected);
+                    });
+                    anno.on('createAnnotation', function (annotation) {
+                      console.log('created', annotation);
+                    });
+                    anno.on('updateAnnotation', function(annotation, previous) {
+                      console.log('updated', previous, 'with', annotation);
+                    });
+                    anno.on('clickAnnotation', function(annotation, shape) {
+                      console.log('clicked', annotation);
+                    });
+                    anno.on('deleteAnnotation', function(annotation) {
+                      console.log('deleted', annotation);
+                    });
+                    anno.on('mouseEnterAnnotation', function(annotation) {
+                      console.log('enter', annotation);
+                    });
+                    anno.on('mouseLeaveAnnotation', function(annotation) {
+                      console.log('leave', annotation);
+                    });
+                    
+                    // anno.loadAnnotations('annotations.w3c.json');
+                    anno.loadAnnotations('label_textual_v1.json')
+
+                    var toolToggle = document.getElementById('current-tool');
+                    toolToggle.addEventListener('click', function() {
+                      if (toolToggle.innerHTML == 'RECTANGLE') {
+                        toolToggle.innerHTML = 'POLYGON';
+                        anno.setDrawingTool('polygon');
+                      } else {
+                        toolToggle.innerHTML = 'RECTANGLE';
+                        anno.setDrawingTool('rect');
+                      }
+                    });
+
+                  // source = '<div><img src="" width="50px"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+                  // $('#addedTextual').after(source)
+                });
+
+                //동작선 추가
+                $('#addDong').click(function () {           
+
+                  // source = '<div><img src="" width="50px"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div>'
+                  // $('#addedDong').after(source)
+                });
+
+                $('#submitBtn').click(function(){
+                  console.log('Submit!!');
+                })
+
+            });
+        }());
+    
+        </script>
+
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+        
+</html>

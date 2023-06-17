@@ -1,0 +1,34 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <div>
+        <!-- <strong>Instructions: </strong> 
+        <span>Click the link below the Website. </span> -->
+        <div>
+            <div>
+                <p><strong>First. Link to the Website:</strong></p>
+
+                <!-- Your website URLs will be substituted for the "url" variable when you publish 
+                       a batch with an input file containing multiple website URLs -->
+                <a href="${url}" target="_blank">${url}</a>
+
+            </div>
+
+            <div>
+                <p><strong>Second. Provide the MTurk code here:</strong></p>
+                <crowd-input name="contactName" placeholder="Enter name" required></crowd-input>
+            </div>
+
+            <div>
+                <p><strong>Third. Click the Submit button:</strong></p>
+           </div>
+
+        </div>
+    </div>
+</crowd-form>

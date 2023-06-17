@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Annotation</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <!-- New -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+          crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- cropper -->
+  <!-- https://jamesooi.design/Croppr.js/ -->
+  <!-- <script src="../../node_modules/croppr/dist/croppr.js"></script>
+        <link rel="stylesheet" href="../../node_modules/croppr/dist/croppr.css"> -->
+
+  <!-- Annotorious -->
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="annotorious.min.css">
+  <script src="annotorious.min.js"></script>
+
+</head>
+<style>
+  /* .modal {
+          padding: 18px;
+          position: absolute;
+          border: 1px solid lightgrey;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 300px;
+      }
+      
+      .modal img {
+          max-width: 100%;
+      } */
+
+  html,
+  body {
+    padding: 20px;
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  #content {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 21px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+  }
+
+  p.instructions {
+    padding: 10px 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  p.caption {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #8f8f8f;
+  }
+
+  p.caption a {
+    color: #3f3f3f;
+  }
+  .card-title {
+    margin-bottom: 0;
+}
+</style>
+
+<body>
+  <!-- Responsive navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-lg-5">
+      <a class="navbar-brand" href="#!">Comic Dense description</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+    </div>
+  </nav>
+  <!-- Header-->
+  <!-- Page Content-->
+  <section id="myDiv" class="pt-4">
+    <div id="myDiv2" class="container-fluid">
+      
+      <div id="myDiv2" class="row row-height">
+        <div id="myDivLeft" class="col-md-4 left">
+          <div class="card border-primary mb-3">
+            <div class="card-body text-primary" style="text-align:center;">
+              <h5 class="card-title" style="color:black">Instruction</h5>
+            </div>
+        </div>
+        <div class="card border-primary mb-3">
+          <div class="card-body text-primary">
+            <div class="card-body text-primary">
+              <p class="card-text" style="color:black">
+                <ol>
+                  <!-- <li style="color:black">Main idea here is to describe the comic image in the middle panel.</li><br> -->
+                  <li style="color:black">Please describe the visual content "of the comic image" such as <b>actors</b>(<i>e.g.</i>, people, animal)
+                  , their <b>actions and expressions</b>(<i>e.g.</i>, walking, looking happy) 
+                  and the <b>environment</b> where these actions take place(<i>e.g.</i>, gym, car);<br><br>
+                  </li>
+                  <span style="color:black">&#8251;</span><span style="color:black">Please use a minimum of 8 words;</span><br>
+                  <span style="color:black">&#8251;</span><span style="color:black">Please kee your description concise overall;</span><br><br>
+                  <li style="color:black">
+                  After describe the comic image below, then click <b>'Submit'</b> button for the get MTurk code;<br>
+                  </li>
+              </ol>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div id="myDivMid" class="col-md-4 mid" style="text-align:center;"> 
+          <div class="card border-primary mb-3">
+            <div class="card-body text-primary" style="text-align:center;">
+              <h5 class="card-title" style="color:black">Comic Image</h5>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="myDivRight" class="col-md-4 right" color="black">
+          <div class="card border-primary mb-3">
+            <div class="card-body text-primary" style="text-align:center;">
+              <h5 class="card-title" style="color:black">Write description</h5>
+            </div>
+          </div>
+          <div class="card border-primary mb-3">
+            <div class="card-body text-primary">
+              <p class="card-text" style="color:black">
+                <ol>
+                  <!-- <li style="color:black">Main idea here is to describe the comic image in the middle panel.</li><br> -->
+                  <li style="color:black">Please provide the description of the comic first, and then indicate the scene numbers in parentheses. ex. (1-5) <br><br>
+                  </li>
+              </ol>
+              </p>
+            </div>
+          </div>
+
+          <form>
+            <div class="form-group">
+              <div style="margin-bottom: 15px;">
+                <textarea class="form-control" id="des1" rows="15"></textarea>
+              </div>
+              <div class="row" style="margin-bottom: 15px;">
+          <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+
+      <!-- <div id="myDiv3_submit">
+        <h1>Submitted! Thanks!</h1>
+        <h1>Here's the code. Please copy and paste on the MTurk page.</h1>
+        <p id="code"></p>
+      </div> -->
+    </div>
+  </section>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+    </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="bootstrap.bundle.min.js / bootstrap.bundle.js"></script> -->
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+<script>
+    // Import the functions you need from the SDKs you need
+  //   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+  // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  (function () {
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      // const firebaseConfig = {
+      //   apiKey: "AIzaSyC_mHdFFuhGGSmo7UvZ2xGw_EQcnzhXon0",
+      //   authDomain: "accesscomics3-74671.firebaseapp.com",
+      //   databaseURL: "https://accesscomics3-74671-default-rtdb.firebaseio.com",
+      //   projectId: "accesscomics3-74671",
+      //   storageBucket: "accesscomics3-74671.appspot.com",
+      //   messagingSenderId: "593599091950",
+      //   appId: "1:593599091950:web:300345d836dcfd64ac8fff",
+      //   measurementId: "G-Z1PM2PH5DR"
+      // };
+
+      // // Initialize Firebase
+      // const app = initializeApp(firebaseConfig);
+      // const analytics = getAnalytics(app);
+    
+    //모든 html 페이지가 화면에 뿌려지고 나서 저 ready안에 서술된 이벤트들이 동작준비를 하는것
+    jQuery(document).ready(function () {
+
+      const adj = ['Alcoholic', 'Silent', 'Big', 'Difficult', 'Courageous', 'Fancy', 'Cruel', 'Materialistic', 'Childlike', 'Ruthless',
+        'Flawless', 'Doubtful', 'Jealous', 'Husky', 'Enchanted', 'Idiotic', 'Giant', 'Boring', 'Determined', 'Irritating'];
+      const animal = ['Sheep', 'Chimpanzee', 'Antelope', 'Bear', 'Fox', 'Cat', 'Puma', 'Ape', 'Cow', 'Koala',
+        'Deer', 'Parrot', 'Donkey', 'Gorilla', 'Alpaca', 'Hamster', 'Frog', 'Elephant', 'Alligator', 'Dingo'];
+      const adj_animal = [];
+      for (var i in adj) {
+        for (var j in animal) {
+          adj_animal.push(adj[i] + " " + animal[j])
+        }
+      }
+      // Create session name
+      var condition = 1;
+      var newSessionName = 'vv'+condition+'_'+ adj_animal[Math.floor(Math.random() * adj_animal.length)] + Date.now();
+      //const databaseURL = "https://accesscomics3mturk-default-rtdb.asia-southeast1.firebasedatabase.app/"+newSessionName;
+      const databaseURL = "https://accesscomics3mturkvv2-default-rtdb.us-central1.firebasedatabase.app/"+newSessionName;
+      const db = ['/annotations1', '/annotations2'];
+
+      sendData = (dataDict, index) => {
+        //console.log(dataDict)
+             return fetch( `${databaseURL+ db[index]}/.json`, {
+                    method: 'POST',
+                    body: JSON.stringify(dataDict)
+             }).then(res => {
+            if (res.status !== 200) {
+                    throw new Error(res.statusText);
+            }
+            return res.json();
+            }).then((res) => {
+            //console.log(+ index + ” succesfully sent!“)
+            })
+        };
+
+
+      //초기화 변수
+      var starttime = new Date().getTime();
+      
+      const query = window.location.href;
+      const param = new URLSearchParams(query);
+      const cuti = param.get('n');
+      console.log(cuti);
+      
+      if(cuti==1) imgAnno = 'Dungeon_2';
+      else if(cuti==2) imgAnno = 'Dungeon_3';
+      else if(cuti==3) imgAnno = 'Dungeon_4';
+      else if(cuti==4) imgAnno = 'Hourglass_2';
+      else if(cuti==5) imgAnno = 'Hourglass_3';
+      else if(cuti==6) imgAnno = 'Hourglass_4';
+      else if(cuti==7) imgAnno = 'MyLife_2';
+      else if(cuti==8) imgAnno = 'MyLife_3';
+      else if(cuti==9) imgAnno = 'MyLife_4';
+
+      console.log(imgAnno);
+      var imgSrc = '../assets/Tappytoon/Mturk/'+imgAnno+'.jpg';
+
+      
+      //이미지
+      function getImg() {
+        imgInput = '<div><img width="400px" src="' + imgSrc + '" "></div>'
+        
+        $('#myDivMid').append(imgInput);
+      }
+      getImg();
+
+
+      //소설
+      // function readJSON(file, callback) {
+      //   var rawFile = new XMLHttpRequest();
+      //   rawFile.overrideMimeType("application/json");
+      //   rawFile.open("GET", file, true);
+      //   rawFile.onreadystatechange = function () {
+      //     if (rawFile.readyState === 4 && rawFile.status == "200") {
+      //       callback(rawFile.responseText);
+      //     }
+      //   }
+      //   rawFile.send(null);
+      // }
+      // readJSON("../assets/Tappytoon/Dungeon/Dungeon_novel_mapping.json", function (text) {
+      //   var Data = JSON.parse(text);
+      //   $('#comicnovel').append(Data[i].Mapping);
+      //   $('#comicnovel').append("<br>");
+      // });
+
+      // json 파일로 출력
+      var saveAnno = [];
+      var MiniAnno = 
+      {
+          //기본annotation정보
+          "condition" : condition,
+          "userId": newSessionName,
+          "comic" : imgAnno,
+          "@context": imgSrc,
+          //바뀌는 정보
+          "annotation":[
+          ]
+      }
+
+      $('#submitBtn').click(function () {
+        console.log('Submit!!');
+
+        // 최소 글자 수 
+        des1Cnt = $('#des1').val().length;
+        if(des1Cnt>0) des1Cnt = $('#des1').val().match(/\w+/g).length;
+
+        var alertStr = "";
+
+        if(des1Cnt<8){
+          alertStr = alertStr + "Please write at least 8 words";
+          alertStr = alertStr + "\n";
+          alert(alertStr);
+        }
+
+        else
+        {
+          //alert('Submit!');
+          MiniAnno.scene = $('#des1').val();
+          var endTime = new Date().getTime();
+          MiniAnno.time = endTime-starttime;
+          sendData(MiniAnno, 0);
+          sendData(saveAnno, 1);
+          // $("#myDiv3").hide();
+          // $("#myDiv3_submit").show();
+
+          //window.name = 'parentForm_v1';
+          // openWin = window.open('annotation_submit.html', 'childForm').focus();
+          //openWin = 
+          localStorage.setItem('key_code', newSessionName);
+          window.open('annotation_submit.html', 'childForm').focus();
+        
+        }
+
+      })
+
+    });
+  }());
+
+</script>
+
+</html>

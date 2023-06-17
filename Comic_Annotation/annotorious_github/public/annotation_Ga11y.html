@@ -1,0 +1,132 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<style>
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Annotation</title>
+    <style>
+        .wrapper{
+            display: flex;
+            padding: 20px;
+        }
+        .left{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .slider{
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        .question{
+            display: flex;
+        }
+        .simple{
+            margin: 10px 10px 10px 10px; 
+            padding:10px;
+        }
+        .simple2{
+            margin: 10px 10px 10px 10px; 
+            padding:10px;
+            margin-left: 40px;
+        }
+        .simple2{
+            margin: 10px 10px 10px 10px; 
+            padding:10px;
+            margin-left: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task successfully submit answers -->
+<body>
+        <div class="simple">
+            <h1>Instructions</h1>
+            <p>We want to use one of them to make people understand the content even without seeing the comic image.</p>
+            <!-- <p><b>Please read them first, then click the "reveal" button to see the comic image. You will then rate the annotation in a 1-7 scale.</b></p> -->
+            <p><b>You will rate the annotation in a 1-7 scale.</b></p>
+    </div>
+
+        <crowd-form answer-format="flatten-objects" class="left" style="margin-left: 50px;">
+
+            
+            <!-- <img width="400px" src="https://raw.githubusercontent.com/YunjungLeeHappy/AnnotationC/main/annotorious_github/assets/Tappytoon/Mturk/" + "Dungeon_1" + ".jpg"> -->
+            <div class="simple2">
+                <img width="400px" src="${imgSrc}">
+            </div>
+
+            <div class="simple2">            
+                <h2>Annotation</h2>
+                <!-- The text you want classified will be substituted for the "text" variable when you 
+                       publish a batch with a CSV input file containing multiple text items  -->
+                ${text}
+            </div>
+
+            <div class="simple2"> 
+      
+                <div class="slider" >
+                    <span><b>Accurate</b> : On a scale of 1-7 (with 1 being not accurate at all), how accurate is this annotation to the comic image visual contents?</span>
+                    <crowd-slider name="accurate" min="1" max="7" step="1" value="4" pin="false" required></crowd-slider>
+                </div>
+                <div class="slider" >
+                    <span><b>Clear</b> : On a scale of 1-7 (with 1 being not clear at all), how clear of this annotation?</span>
+                    <crowd-slider name="volume" min="1" max="7" step="1" value="4" pin="true" required></crowd-slider>
+                </div>
+                <div class="slider" >
+                    <span><b>Informative</b> : On a scale of 1-7 (with 1 being not informative at all), how informative of this annotation?</span>
+                    <crowd-slider name="precise" min="1" max="7" step="1" value="4" pin="true" required></crowd-slider>
+                </div>
+                <div class="slider" >
+                    <span><b>Understandable</b> : On a  scale of 1-7 (with 1 being not Understandable at all), how Understandable is this comic image without looking at it based on this annotation?</span>
+                    <crowd-slider name="speed" min="1" max="7" step="1" value="4" pin="true" required></crowd-slider>
+                </div>
+           
+            </div>
+            <!-- Definitions from Oxford Languages -->
+            <!-- <short-instructions>
+            <h3>Definitions of Voice Features</h3>
+            <p><b>Pitch</b> : The degree of highness or lowness of a tone.</p>
+            <p><b>Loudness</b> : The degree of loudness in volumn.</p>
+            <p><b>Hoarseness</b> : The degree of roughness and harshness of a voice, typically as the result of a sore throat or of shouting</p>
+            <p><b>Speed</b> : The speech rate.</p>
+            <p><b>Variation</b> : The rise and fall of the voice in speaking; Monotonous means lacking in variation in tone or pitch.</p>
+            <p><b>Smoothness</b> : The level of smoothness of the sound.</p>
+            <p><b>Breathiness</b> : The rate of the usage of air-flow; breathy sound means high air-flow.</p>
+            <p><b>Preference</b> : The level of preference. Strong preference means you like the voice very much.</p>
+            </short-instructions> -->
+
+        </crowd-form>
+</body>
+
+<script>
+    // Import the functions you need from the SDKs you need
+  //   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+  // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+    //var jbString = $text;
+    //var jbSplit = jbString.split(',');
+
+    //var imgSrc = 'https://raw.githubusercontent.com/YunjungLeeHappy/AnnotationC/main/annotorious_github/assets/Tappytoon/Mturk/' + jbSplit[2] + '.jpg';
+    //imgInput = '<div><img width="400px" src="' + imgSrc + '" "></div>'
+    //$('#myDivMid').append(imgInput);
+
+        
+</script>

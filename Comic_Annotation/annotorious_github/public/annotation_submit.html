@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Annotation</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <!-- New -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+          crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- cropper -->
+  <!-- https://jamesooi.design/Croppr.js/ -->
+  <!-- <script src="../../node_modules/croppr/dist/croppr.js"></script>
+        <link rel="stylesheet" href="../../node_modules/croppr/dist/croppr.css"> -->
+
+  <!-- Annotorious -->
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="annotorious.min.css">
+  <script src="annotorious.min.js"></script>
+
+</head>
+<style>
+  /* .modal {
+          padding: 18px;
+          position: absolute;
+          border: 1px solid lightgrey;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 300px;
+      }
+      
+      .modal img {
+          max-width: 100%;
+      } */
+
+  html,
+  body {
+    padding: 20px;
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  #content {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 21px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+  }
+
+  p.instructions {
+    padding: 10px 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  p.caption {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #8f8f8f;
+  }
+
+  p.caption a {
+    color: #3f3f3f;
+  }
+  .card-title {
+    margin-bottom: 0;
+}
+</style>
+
+<body>
+  <!-- Responsive navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-lg-5">
+      <a class="navbar-brand" href="#!">Submit!</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+    </div>
+  </nav>
+  <!-- Header-->
+  <!-- Page Content-->
+  <section id="myDiv" class="pt-4">
+    <div id="myDiv2" class="container-fluid">
+      <h1>Submitted!  Thanks!</h1>
+      <h1>There is a red code in the below. Please copy and paste on the MTurk page.</h1><br>
+      <h1  id="code" style="color:red; font-weight: bold;"></h1>
+      <div id="myDiv3" class="row row-height">
+
+      </div>
+    </div>
+  </section>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+    </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="bootstrap.bundle.min.js / bootstrap.bundle.js"></script> -->
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+<script>
+    // Import the functions you need from the SDKs you need
+  //   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+  // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  (function () {
+
+    
+    //모든 html 페이지가 화면에 뿌려지고 나서 저 ready안에 서술된 이벤트들이 동작준비를 하는것
+    jQuery(document).ready(function () {
+      //$('#code').append(newSessionName);
+      // opener.document.getElementById("newSessionName").value = document.getElementById("code").value
+      //var parent_val = opener.newSessionName;
+      if(localStorage.getItem('key_code')){
+        var data = localStorage.getItem('key_code')
+      }
+      console.log(data);
+      $('#code').append(data);
+    });
+  }());
+
+</script>
+
+</html>
