@@ -1,0 +1,346 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<style>
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Annotation</title>
+    <style>
+        .wrapper{
+            display: flex;
+            padding: 20px;
+        }
+        .left{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .slider{
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        .question{
+            display: flex;
+        }
+        .simple{
+            margin: 10px 10px 10px 10px; 
+            padding:10px;
+        }
+        .simple2{
+            margin: 10px 10px 10px 10px; 
+            padding:10px;
+            margin-left: 40px;
+        }
+        .simple2{
+            margin: 10px 10px 10px 10px; 
+            padding:10px;
+            margin-left: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task successfully submit answers -->
+<body>
+        <div class="simple">
+            <h1>Instructions</h1>
+            <p>The following paragraph is an annotation of the comic image below.</p>
+            <p>We want to use one of them to make people understand the content even without seeing the image.</p>
+            <!-- <p><b>Please read them first, then click the "reveal" button to see the comic image. You will then rate the annotation in a 1-7 scale.</b></p> -->
+            <p><b>Please fill out the ranking according to the criteria presented.</b></p>
+    </div>
+
+        <crowd-form answer-format="flatten-objects" class="left" style="margin-left: 50px;">
+            <!-- <img width="400px" src="https://raw.githubusercontent.com/YunjungLeeHappy/AnnotationC/main/annotorious_github/assets/Tappytoon/Mturk/" + "Dungeon_1" + ".jpg"> -->
+            <div class="simple2">
+               <img width="400px" src="${imgSrc}">
+               <div class="simple2">
+                <img width="400px" src="${imgSrc}">
+                <div class="simple2">
+                    <img width="400px" src="${imgSrc}">
+               <!--<img width="400px" src="../assets/Tappytoon/Mturk/Dungeon_1.jpg">-->
+            </div>
+
+            <div class="simple2">            
+                <h3>Annotation A</h3>
+                <!-- The text you want classified will be substituted for the "text" variable when you 
+                       publish a batch with a CSV input file containing multiple text items  -->
+                ${text}
+                <!--HE WAS SHOCKED AND FREEZED BECAUSE HE WAS WATCHING A ...................-->
+                <h3>Annotation B</h3>
+                <!-- The text you want classified will be substituted for the "text" variable when you 
+                       publish a batch with a CSV input file containing multiple text items  -->
+                ${text}
+                <!--HE WAS SHOCKED AND FREEZED BECAUSE HE WAS WATCHING A ...................-->
+                <h3>Annotation C</h3>
+                <!-- The text you want classified will be substituted for the "text" variable when you 
+                       publish a batch with a CSV input file containing multiple text items  -->
+                ${text}
+                <h3>Annotation D</h3>
+                <!-- The text you want classified will be substituted for the "text" variable when you 
+                       publish a batch with a CSV input file containing multiple text items  -->
+                ${text}
+ 
+            </div>
+            <div class="simple2"> 
+                <h2>Please choose an annotation according to the ranking. </h2>
+                <div>
+                    <span> <b>Accurate</b> : Please rank each in order of accuracy to the visual contents of the comic image. <br>
+                        <br>
+                    1st
+                    
+                        <select name="Accuracy_1st" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 2nd
+                    
+                    <select name="Accuracy_2nd" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    &nbsp;  3rd
+                    
+                        <select name="Accuracy_3rd" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 4th
+                    
+                    <select name="Accuracy_4th" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    </span>
+                    <br>
+                    <br>
+                    <span> <b>Clear</b> : Please rank the annotations in order of clarity.
+                        <br>
+                        <br>
+                    1st
+                    
+                        <select name="clear_1st" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 2nd
+                    
+                    <select name="clear_2nd" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    &nbsp;  3rd
+                    
+                        <select name="clear_3rd" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 4th
+                    
+                    <select name="clear_4th" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    </span>
+                    <br>
+                    <br>
+
+                    <span> <b>Informative</b> : Please rank the annotations in order of informativeness.
+                        <br>
+                        <br>
+                    1st
+                    
+                        <select name="informative_1st" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 2nd
+                    
+                    <select name="informative_2nd" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    &nbsp;  3rd
+                    
+                        <select name="informatvie_3rd" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 4th
+                    
+                    <select name="informative_4th" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    </span>
+                    <br>
+                    <br>
+
+                    <span> <b>Understandable</b> : Please rank the annotations in order of understandability without looking at the comic image based on this annotation <br>
+                        <br>
+                    1st
+                    
+                        <select name="understandable_1st" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 2nd
+                    
+                    <select name="understandable_2nd" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    &nbsp;  3rd
+                    
+                        <select name="understandable_3rd" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 4th
+                    
+                    <select name="understandable_4th" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    </span>
+
+                    <br>
+                    <br>
+                    <span> <b>Length</b> : Please rank the annotations in order of appropriateness in terms of length <br>
+                        <br>
+                    1st
+                    
+                        <select name="length_1st" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 2nd
+                    
+                    <select name="length_2nd" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    &nbsp;  3rd
+                    
+                        <select name="length_3rd" style="font-size: large" required>
+                            <option value="">(Please select)</option>
+                            <option>Annotation A</option>
+                            <option>Annotation B</option>
+                            <option>Annotation C</option>
+                            <option>Annotation D</option>
+                        </select>
+                    &nbsp; 4th
+                    
+                    <select name="length_4th" style="font-size: large" required>
+                        <option value="">(Please select)</option>
+                        <option>Annotation A</option>
+                        <option>Annotation B</option>
+                        <option>Annotation C</option>
+                        <option>Annotation D</option>
+                      </select>
+                    </span>
+                </div>
+    
+            </div>
+           
+            </div>
+            <!-- Definitions from Oxford Languages -->
+            <!-- <short-instructions>
+            <h3>Definitions of Voice Features</h3>
+            <p><b>Pitch</b> : The degree of highness or lowness of a tone.</p>
+            <p><b>Loudness</b> : The degree of loudness in volumn.</p>
+            <p><b>Hoarseness</b> : The degree of roughness and harshness of a voice, typically as the result of a sore throat or of shouting</p>
+            <p><b>Speed</b> : The speech rate.</p>
+            <p><b>Variation</b> : The rise and fall of the voice in speaking; Monotonous means lacking in variation in tone or pitch.</p>
+            <p><b>Smoothness</b> : The level of smoothness of the sound.</p>
+            <p><b>Breathiness</b> : The rate of the usage of air-flow; breathy sound means high air-flow.</p>
+            <p><b>Preference</b> : The level of preference. Strong preference means you like the voice very much.</p>
+            </short-instructions> -->
+
+        </crowd-form>
+</body>
+
+<script>
+    // Import the functions you need from the SDKs you need
+  //   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+  // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+    //var jbString = $text;
+    //var jbSplit = jbString.split(',');
+
+    //var imgSrc = 'https://raw.githubusercontent.com/YunjungLeeHappy/AnnotationC/main/annotorious_github/assets/Tappytoon/Mturk/' + jbSplit[2] + '.jpg';
+    //imgInput = '<div><img width="400px" src="' + imgSrc + '" "></div>'
+    //$('#myDivMid').append(imgInput);
+
+        
+</script>
